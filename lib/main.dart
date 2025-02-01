@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_app/pages/home_page.dart';
 import 'package:my_app/pages/login_page.dart';
 
@@ -22,6 +23,11 @@ class MyApp extends StatelessWidget {
     bringVegitables(thaila: false);
     return MaterialApp(
         //home: HomePage(),
+        themeMode: ThemeMode.light,
+        theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          fontFamily: GoogleFonts.lora().fontFamily,
+        ),
         routes: {
           "/": (context) => LoginPage(),
           "/login": (context) => LoginPage(),
