@@ -13,16 +13,28 @@ class AppService implements BaseService {
 
   @override
   Future getResponse(String url, Map<String, dynamic> params,
-      Map<String, String> headers, Map<String, dynamic> queryParameters) {
-    
-    throw UnimplementedError();
+      Map<String, String> headers, Map<String, dynamic> queryParameters) async {
+    dynamic responseJson;
+    final finalUrl = validateURL(url);
+    Uri uri = getUri(finalUrl, queryParameters);
+    headers = getHeader(headers);
+    final response =
+        await http.get(uri, headers: headers);
+    responseJson = _parseToJson(response.body);
+    return responseJson;
   }
 
   @override
   Future patchResponse(String url, Map<String, dynamic> params,
-      Map<String, String> headers, Map<String, dynamic> queryParameters) {
-    
-    throw UnimplementedError();
+      Map<String, String> headers, Map<String, dynamic> queryParameters) async {
+    dynamic responseJson;
+    final finalUrl = validateURL(url);
+    Uri uri = getUri(finalUrl, queryParameters);
+    headers = getHeader(headers);
+    final response =
+        await http.patch(uri, headers: headers, body: jsonEncode(params));
+    responseJson = _parseToJson(response.body);
+    return responseJson;
   }
 
   @override

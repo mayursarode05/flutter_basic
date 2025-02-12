@@ -41,7 +41,9 @@ class AppDrawer extends StatelessWidget {
               ),
               title: Text(
                 "Profile",
-              ),
+              ),onTap: () {
+                Navigator.pushNamed(context, MyRoutes.profileRoute);
+              },
             ),
             Divider(
               thickness: 1,

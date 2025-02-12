@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_app/view/screens/common/home_page.dart';
 import 'package:my_app/view/screens/common/login_page.dart';
+import 'package:my_app/view/screens/common/profile_page.dart';
 import 'package:my_app/view/screens/common/signup_page.dart';
 import './utils/routes.dart';
 
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
           MyRoutes.loginRoute: (context) => LoginPage(),
           MyRoutes.homeRoute: (context) => HomePage(),
           MyRoutes.signUpRoute: (context) => SignUp(),
+          MyRoutes.profileRoute: (context) => ProfilePage(),
         }
     );
   }

@@ -1,3 +1,5 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import '../../../../../utils/utils.dart';
 
 class LoginPage extends StatefulWidget {
@@ -135,7 +137,11 @@ class _LoginPageState extends State<LoginPage> {
 
         if (response != null && response["success"] == true) {
           // Successful Login
-          if (mounted) {
+          if (mounted) {    
+            String userId = response["user"][0]["userId"];
+            print("userId: $userId"); 
+            const storage = FlutterSecureStorage();
+            await storage.write(key: 'loggedInUserId', value: userId);        
             Navigator.pushNamed(context, MyRoutes.homeRoute, arguments: true);
           }
         } else {
@@ -169,6 +175,9 @@ class _LoginPageState extends State<LoginPage> {
           autoDismiss: true,
         ).show(context);
       }
+    }
+    else{
+      
     }
   }
 }

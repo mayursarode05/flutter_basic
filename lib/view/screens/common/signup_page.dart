@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:my_app/utils/utils.dart';
 
 class SignUp extends StatefulWidget {
@@ -145,7 +144,7 @@ class _SignUpState extends State<SignUp> {
                             backgroundColor: Color(0xff4c505b),
                             child: IconButton(
                                 color: Colors.white,
-                                onPressed: () => HandleSignUp(
+                                onPressed: () => handleSignUp(
                                   requestParam: {
                                     "userName": _userNameController.text,
                                     "password": _passwordController.text,
@@ -170,7 +169,7 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
-  Future<void> HandleSignUp({
+  Future<void> handleSignUp({
     Map<String, dynamic> requestParam = const {},
     Map<String, dynamic> queryParam = const {},
   }) async {
@@ -221,7 +220,7 @@ class _SignUpState extends State<SignUp> {
       }
     }
   }
-  HandleSignIn(){
+  handleSignIn ()  {
 
   }
 }
