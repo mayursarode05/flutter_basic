@@ -139,7 +139,6 @@ class _LoginPageState extends State<LoginPage> {
           // Successful Login
           if (mounted) {    
             String userId = response["user"][0]["userId"];
-            print("userId: $userId"); 
             const storage = FlutterSecureStorage();
             await storage.write(key: 'loggedInUserId', value: userId);        
             Navigator.pushNamed(context, MyRoutes.homeRoute, arguments: true);

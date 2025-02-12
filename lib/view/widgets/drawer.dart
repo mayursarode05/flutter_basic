@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:my_app/utils/routes.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -77,6 +78,8 @@ class AppDrawer extends StatelessWidget {
   }
 
   logout (BuildContext context){ 
+    const session = FlutterSecureStorage();
+    session.deleteAll();
     Navigator.pushNamed(context, MyRoutes.loginRoute);
   }
 }
