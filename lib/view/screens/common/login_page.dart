@@ -93,11 +93,11 @@ class _LoginPageState extends State<LoginPage> {
                               "password": _passwordController.text,
                             }, queryParam: {}),
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepPurple,
+                            backgroundColor: const Color.fromARGB(250, 104, 58, 183),
                             minimumSize: Size(150, 50),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8)),
-                            foregroundColor: Colors.white),
+                            foregroundColor: const Color.fromARGB(255, 255, 255, 255)),
                         child: Text("Login",
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.bold))),
@@ -139,8 +139,16 @@ class _LoginPageState extends State<LoginPage> {
           // Successful Login
           if (mounted) {    
             String userId = response["user"][0]["userId"];
+            String loggedInEmail = response["user"][0]["email"];
+            String loggedInFirstName = response["user"][0]["firstName"];
+            String loggedInLastName = response["user"][0]["lastName"];
+            String userName = response["user"][0]["userName"];
             const storage = FlutterSecureStorage();
             await storage.write(key: 'loggedInUserId', value: userId);        
+            await storage.write(key: 'userName', value: userName);        
+            await storage.write(key: 'loggedInEmail', value: loggedInEmail);        
+            await storage.write(key: 'loggedInFirstName', value: loggedInFirstName);        
+            await storage.write(key: 'loggedInLastName', value: loggedInLastName);        
             Navigator.pushNamed(context, MyRoutes.homeRoute, arguments: true);
           }
         } else {

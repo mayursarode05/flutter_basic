@@ -3,8 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:my_app/utils/routes.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
+
+  @override
+  _AppDrawerState createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  late String userEmail;
+  late String userName;
+
+  @override
+  void initState() {
+    super.initState();
+    const storage = FlutterSecureStorage();
+    storage.read(key: 'loggedInEmail').then((value) {
+      setState(() {
+        userEmail = value ?? 'No Email';
+      });
+    });
+    storage.read(key: 'userName').then((value) {
+      setState(() {
+        userName = value ?? 'No Name';
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +41,8 @@ class AppDrawer extends StatelessWidget {
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                 margin: EdgeInsets.zero,
-                accountName: Text("Mayur S"),
-                accountEmail: Text("mayur.sarode@thinkbridge.in"),
+                accountName: Text(userName),
+                accountEmail: Text(userEmail),
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: AssetImage("assets/images/boy.png"),
                 ),
